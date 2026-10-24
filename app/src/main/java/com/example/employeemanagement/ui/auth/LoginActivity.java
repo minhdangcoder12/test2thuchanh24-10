@@ -101,17 +101,22 @@ public class LoginActivity extends AppCompatActivity {
 
         AppDatabase.databaseWriteExecutor.execute(() -> {
             Account account = db.accountDao().login(username, password);
+            int employeeId = -1;
+            if (account != null && "EMPLOYEE".equals(account.getRole())) {
+                Employee employee = db.employeeDao().findByAccountId(account.getId());
+                if (employee != null) employeeId = employee.getId();
+            }
+            final int resolvedEmployeeId = employeeId;
             runOnUiThread(() -> {
                 setLoadingState(false);
                 if (account != null) {
-                    int employeeId = -1;
-                    if ("EMPLOYEE".equals(account.getRole())) {
-                        Employee emp = db.employeeDao().findByAccountId(account.getId());
-                        if (emp != null) employeeId = emp.getId();
+                    if ("EMPLOYEE".equals(account.getRole()) && resolvedEmployeeId == -1) {
+                        tilUsername.setError("Tài khoản chưa có hồ sơ nhân viên");
+                        return;
                     }
                     sessionManager.createSession(
                         account.getId(), account.getUsername(),
-                        account.getRole(), employeeId
+                        account.getRole(), resolvedEmployeeId
                     );
                     Toast.makeText(this, "Chào mừng, " + account.getUsername() + "!", Toast.LENGTH_SHORT).show();
                     redirectByRole(account.getRole());

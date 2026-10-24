@@ -14,6 +14,22 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <TextView
+            android:id="@+id/tvEmployeeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary" />
+
+        <TextView
+            android:id="@+id/tvEmployeeCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary" />
+
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="8dp">
             <TextView android:id="@+id/tvPeriod" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="16sp" android:textStyle="bold" android:textColor="#212121"/>
             <TextView android:id="@+id/tvStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13sp" android:textColor="@color/green_paid" android:textStyle="bold"/>
