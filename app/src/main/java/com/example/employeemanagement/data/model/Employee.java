@@ -1,0 +1,62 @@
+package com.example.employeemanagement.data.model;
+
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
+
+@Entity(
+    tableName = "employee",
+    foreignKeys = @ForeignKey(
+        entity = Account.class,
+        parentColumns = "id",
+        childColumns = "accountId",
+        onDelete = ForeignKey.CASCADE
+    ),
+    indices = {@Index("accountId"), @Index(value = "code", unique = true)}
+)
+public class Employee {
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    private String code;
+    private String fullname;
+    private String email;
+    private String phone;
+    private double hourlyRate;
+    private int accountId;
+
+    public Employee() {}
+
+    public Employee(String code, String fullname, String email, String phone, double hourlyRate, int accountId) {
+        this.code = code;
+        this.fullname = fullname;
+        this.email = email;
+        this.phone = phone;
+        this.hourlyRate = hourlyRate;
+        this.accountId = accountId;
+    }
+
+    // Getters & Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public String getCode() { return code; }
+    public void setCode(String code) { this.code = code; }
+
+    public String getFullname() { return fullname; }
+    public void setFullname(String fullname) { this.fullname = fullname; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
+
+    public double getHourlyRate() { return hourlyRate; }
+    public void setHourlyRate(double hourlyRate) { this.hourlyRate = hourlyRate; }
+
+    public int getAccountId() { return accountId; }
+    public void setAccountId(int accountId) { this.accountId = accountId; }
+}

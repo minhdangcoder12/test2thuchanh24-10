@@ -1,0 +1,34 @@
+# Android
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Keystore files (IMPORTANT: never commit keystore)
+*.jks
+*.keystore
+
+# Google Services (if using Firebase)
+google-services.json
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+
+# Buck
+buck-out/
+\.buckd/
+*.keystore
+!debug.keystore
