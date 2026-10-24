@@ -26,6 +26,7 @@
         <activity android:name=".ui.admin.AdminDashboardActivity" android:exported="false"/>
         <activity android:name=".ui.admin.EmployeeListActivity" android:exported="false"/>
         <activity android:name=".ui.admin.AddEditEmployeeActivity" android:exported="false"/>
+        <activity android:name=".ui.admin.EmployeeDetailActivity" android:exported="false"/>
         <activity android:name=".ui.admin.SalaryManagementActivity" android:exported="false"/>
         <activity android:name=".ui.admin.AttendanceReportActivity" android:exported="false"/>
 

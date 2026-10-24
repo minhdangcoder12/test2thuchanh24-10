@@ -20,6 +20,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
     private OnEmployeeClickListener listener;
 
     public interface OnEmployeeClickListener {
+        void onItemClick(Employee employee);
         void onEditClick(Employee employee);
         void onDeleteClick(Employee employee);
     }
@@ -32,7 +33,8 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_employee, parent, false);
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_employee, parent, false);
         return new ViewHolder(v);
     }
 
@@ -45,12 +47,25 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
         holder.tvPhone.setText(emp.getPhone());
         holder.tvHourlyRate.setText(String.format("%,.0f VND/giờ", emp.getHourlyRate()));
 
+        // Click toàn bộ item → mở detail
+        holder.itemView.setOnClickListener(v -> listener.onItemClick(emp));
         holder.btnEdit.setOnClickListener(v -> listener.onEditClick(emp));
         holder.btnDelete.setOnClickListener(v -> listener.onDeleteClick(emp));
     }
 
     @Override
-    public int getItemCount() { return list.size(); }
+    public int getItemCount() {
+        return list.size();
+    }
+
+    /**
+     * Cập nhật danh sách (dùng cho search real-time)
+     */
+    public void updateList(List<Employee> newList) {
+        list.clear();
+        list.addAll(newList);
+        notifyDataSetChanged();
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvCode, tvName, tvEmail, tvPhone, tvHourlyRate;
@@ -58,13 +73,13 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvCode = itemView.findViewById(R.id.tvCode);
-            tvName = itemView.findViewById(R.id.tvName);
-            tvEmail = itemView.findViewById(R.id.tvEmail);
-            tvPhone = itemView.findViewById(R.id.tvPhone);
+            tvCode       = itemView.findViewById(R.id.tvCode);
+            tvName       = itemView.findViewById(R.id.tvName);
+            tvEmail      = itemView.findViewById(R.id.tvEmail);
+            tvPhone      = itemView.findViewById(R.id.tvPhone);
             tvHourlyRate = itemView.findViewById(R.id.tvHourlyRate);
-            btnEdit = itemView.findViewById(R.id.btnEdit);
-            btnDelete = itemView.findViewById(R.id.btnDelete);
+            btnEdit      = itemView.findViewById(R.id.btnEdit);
+            btnDelete    = itemView.findViewById(R.id.btnDelete);
         }
     }
 }
