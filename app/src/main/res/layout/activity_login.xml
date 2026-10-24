@@ -1,43 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="32dp"
-    android:background="@color/primary">
+    android:padding="28dp"
+    android:background="#0D47A1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="🏢"
-        android:textSize="64sp"
-        android:layout_marginBottom="8dp"/>
+    <!-- Logo / Icon -->
+    <LinearLayout
+        android:id="@+id/ivLogo"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:background="#1565C0"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp"
+        android:elevation="6dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🏢"
+            android:textSize="48sp"/>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="QUẢN LÝ NHÂN VIÊN"
-        android:textColor="@color/white"
+        android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:letterSpacing="0.08"
         android:layout_marginBottom="4dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Đăng nhập để tiếp tục"
-        android:textColor="#B3E5FC"
+        android:textColor="#90CAF9"
         android:textSize="14sp"
-        android:layout_marginBottom="40dp"/>
+        android:layout_marginBottom="36dp"/>
 
+    <!-- Login Card -->
     <com.google.android.material.card.MaterialCardView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        android:layout_marginBottom="16dp">
+        app:cardCornerRadius="20dp"
+        app:cardElevation="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,25 +56,32 @@
             android:orientation="vertical"
             android:padding="24dp">
 
+            <!-- Username -->
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Tên đăng nhập"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_marginBottom="16dp">
+                app:startIconDrawable="@android:drawable/ic_menu_myplaces"
+                android:layout_marginBottom="14dp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:imeOptions="actionNext"/>
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Password -->
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Mật khẩu"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:startIconDrawable="@android:drawable/ic_lock_lock"
                 app:passwordToggleEnabled="true"
                 android:layout_marginBottom="24dp">
                 <com.google.android.material.textfield.TextInputEditText
@@ -71,19 +89,42 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:imeOptions="actionDone"/>
+                    android:imeOptions="actionDone"
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Progress Bar -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Login Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="54dp"
                 android:text="ĐĂNG NHẬP"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
-                app:cornerRadius="12dp"/>
+                android:letterSpacing="0.06"
+                app:cornerRadius="12dp"
+                app:backgroundTint="#1565C0"/>
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
+    <!-- Hint -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Admin mặc định: admin / admin123"
+        android:textColor="#90CAF9"
+        android:textSize="12sp"
+        android:layout_marginTop="24dp"
+        android:alpha="0.8"/>
 
 </LinearLayout>
