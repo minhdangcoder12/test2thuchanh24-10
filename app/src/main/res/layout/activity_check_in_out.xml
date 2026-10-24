@@ -7,34 +7,155 @@
     android:padding="16dp"
     android:background="@color/gray_light">
 
-    <!-- Status Card -->
+    <!-- Đồng hồ Real-time -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="@color/primary"
+        android:layout_marginBottom="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#CCFFFFFF"
+                android:layout_marginBottom="8dp"/>
+            <!-- Đồng hồ hiển thị giờ thực -->
+            <TextView
+                android:id="@+id/tvClock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00:00"
+                android:textSize="48sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:letterSpacing="0.05"
+                android:fontFamily="monospace"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Thẻ trạng thái chấm công -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
         android:layout_marginBottom="16dp">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
-            <TextView android:id="@+id/tvDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="14sp" android:textColor="@color/text_secondary" android:layout_marginBottom="8dp"/>
-            <TextView android:id="@+id/tvStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="18sp" android:textStyle="bold" android:textColor="#212121" android:layout_marginBottom="16dp"/>
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Giờ vào" android:textColor="@color/text_secondary" android:textSize="12sp"/>
-                    <TextView android:id="@+id/tvCheckIn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--:--" android:textSize="20sp" android:textStyle="bold" android:textColor="@color/primary"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Giờ vào -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Giờ vào"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/tvCheckIn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--:--"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#2E7D32"/>
                 </LinearLayout>
-                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Giờ ra" android:textColor="@color/text_secondary" android:textSize="12sp"/>
-                    <TextView android:id="@+id/tvCheckOut" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--:--" android:textSize="20sp" android:textStyle="bold" android:textColor="#E65100"/>
+
+                <!-- Đường phân cách -->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:background="#E0E0E0"
+                    android:layout_gravity="center_vertical"/>
+
+                <!-- Giờ ra -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Giờ ra"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/tvCheckOut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--:--"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#C62828"/>
                 </LinearLayout>
-                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tổng giờ" android:textColor="@color/text_secondary" android:textSize="12sp"/>
-                    <TextView android:id="@+id/tvTotalHours" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0h 0m" android:textSize="20sp" android:textStyle="bold" android:textColor="#2E7D32"/>
+
+                <!-- Đường phân cách -->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:background="#E0E0E0"
+                    android:layout_gravity="center_vertical"/>
+
+                <!-- Tổng giờ -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tổng giờ"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/tvTotalHours"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0h 0m"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Buttons -->
+    <!-- Nút Chấm công vào -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCheckIn"
         android:layout_width="match_parent"
@@ -46,6 +167,7 @@
         app:cornerRadius="12dp"
         app:backgroundTint="#2E7D32"/>
 
+    <!-- Nút Chấm công ra -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCheckOut"
         android:layout_width="match_parent"

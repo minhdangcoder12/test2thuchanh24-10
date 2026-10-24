@@ -6,16 +6,59 @@
     android:orientation="vertical"
     android:background="@color/gray_light">
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="12dp" android:background="@color/white" android:layout_marginBottom="8dp">
-        <Spinner android:id="@+id/spinnerMonth" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="8dp"/>
-        <Spinner android:id="@+id/spinnerYear" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="8dp"/>
-        <com.google.android.material.button.MaterialButton android:id="@+id/btnLoad" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Xem" app:cornerRadius="8dp"/>
+    <!-- Thanh lọc -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:background="@color/white"
+        android:elevation="2dp"
+        android:layout_marginBottom="4dp">
+        <Spinner
+            android:id="@+id/spinnerMonth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"/>
+        <Spinner
+            android:id="@+id/spinnerYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xem"
+            app:cornerRadius="8dp"/>
     </LinearLayout>
 
+    <!-- Thẻ thống kê tổng hợp -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        android:layout_margin="12dp">
+        <TextView
+            android:id="@+id/tvReportSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chọn tháng để xem báo cáo..."
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            android:padding="14dp"
+            android:lineSpacingExtra="4dp"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Danh sách chấm công -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:padding="8dp"/>
 
 </LinearLayout>
